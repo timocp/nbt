@@ -65,6 +65,8 @@ func read_list_values(data io.Reader, list_type int, size int) []Tag {
 	var values []Tag
 	for i := 0; i < size; i++ {
 		switch list_type {
+		case tag_long:
+			values = append(values, LongTag{"", read_int64(data)})
 		case tag_float:
 			values = append(values, FloatTag{"", read_float32(data)})
 		case tag_double:
